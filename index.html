@@ -1,39 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mix it up!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Lobster&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="./styles/styles.css">
 </head>
 
 <body>
     <header>
-        <h1>What are we drinking tonight? 🍸</h1>
+        <div class="wrapper">
+            <h1>What are we drinking tonight? 🍸</h1>
+        </div>
     </header>
-    <!-- testttt for gitpush -->
 
     <main>
-        <form action="#" method="#" class="myForm" name="myForm">
+        <div class="wrapper">
+            <form action="#" method="#" class="myForm" name="myForm">
 
-            <label for="typeOfLiquor">Pick your poison</label>
-            <select id="typeOfLiqour" name="typeOfLiquor">
-                <option value disabled selected>☠️</option>
-                <option value="tequila">Tequila</option>
-                <option value="vodka">Vodka</option>
-                <option value="rum">Rum</option>
-                <option value="gin">Gin</option>
-                <option value="whiskey">Whiskey</option>
-            </select>
-            <button type="submit">Get me drunk</button>
-
-        </form>
-        <h2>Here are your options:</h2>
-        <ul class="drinkList"></ul>
-
+                <label for="typeOfLiquor">Pick your poison</label>
+                <select id="typeOfLiqour" name="typeOfLiquor">
+                    <option value disabled selected>☠️</option>
+                    <option value="tequila">Tequila</option>
+                    <option value="vodka">Vodka</option>
+                    <option value="rum">Rum</option>
+                    <option value="gin">Gin</option>
+                    <option value="whiskey">Whiskey</option>
+                </select>
+                <button type="submit">Get me drunk</button>
+            </form>
+            <div class="results">
+                <!-- <h2>Here are your options:</h2> -->
+                <h2></h2>
+                <ul class="drinkList"></ul>
+            </div>
+        </div>
     </main>
-    <footer>
+    <footer class="wrapper">
         <p>Created at Juno College by Dianna Plaza & Beatrice Georges-Lemire 🍸</p>
     </footer>
 
