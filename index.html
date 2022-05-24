@@ -14,25 +14,27 @@
 <body>
     <header>
         <div class="wrapper">
-            <h1>What are we drinking tonight? 🍸</h1>
+            <h1>What are we drinking tonight?</h1>
         </div>
     </header>
 
     <main>
         <div class="wrapper">
-            <form action="#" method="#" class="myForm" name="myForm">
-
-                <label for="typeOfLiquor">Pick your poison</label>
-                <select id="typeOfLiqour" name="typeOfLiquor">
-                    <option value disabled selected>☠️</option>
-                    <option value="tequila">Tequila</option>
-                    <option value="vodka">Vodka</option>
-                    <option value="rum">Rum</option>
-                    <option value="gin">Gin</option>
-                    <option value="whiskey">Whiskey</option>
-                </select>
-                <button type="submit">Get me drunk</button>
-            </form>
+            <!-- Come back to make it accessible for s-r (provide instructions) -->
+            <div class="formContainer">
+                <form action="#" method="#" class="myForm" name="myForm">
+                    <label for="typeOfLiquor">Pick your poison</label>
+                    <select id="typeOfLiqour" name="typeOfLiquor">
+                        <option value disabled selected>☠️</option>
+                        <option value="tequila">Tequila</option>
+                        <option value="vodka">Vodka</option>
+                        <option value="rum">Rum</option>
+                        <option value="gin">Gin</option>
+                        <option value="whiskey">Whiskey</option>
+                    </select>
+                    <button type="submit">Get me drunk</button>
+                </form>
+            </div>
             <div class="results">
                 <!-- <h2>Here are your options:</h2> -->
                 <h2></h2>
@@ -40,8 +42,10 @@
             </div>
         </div>
     </main>
-    <footer class="wrapper">
-        <p>Created at Juno College by Dianna Plaza & Beatrice Georges-Lemire 🍸</p>
+    <footer>
+        <div>
+            <p>Created at <a href="https://junocollege.com/">Juno College</a> by Dianna Plaza & Beatrice Georges-Lemire 🍹</p>
+        </div>
     </footer>
 
     <script src="./script.js">
