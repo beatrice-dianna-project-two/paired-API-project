@@ -2,14 +2,29 @@
     // Go get a set of images & cocktail names from TheCocktailDB that match the user's selection of a base liquor
     // Put images on the page as li elements
 
-// create an app object (*haven't decided on a name yet)
+// our namespacing app
 const cocktailApp = {};
 
-// Initialize preset data in the dedicated propertiesimage.png
-    // -apiUrl (we will create two variables for the url by ingredient & url by ID)
+   // -apiUrl (we will create two variables for the url by ingredient & url by ID)
+    const cocktailURLByIngredient = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=";
+    const cocktailURLById = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?iid=552`;
 
-    const cocktailByIngredient = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=`
-    const cocktailById = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=`
+    // making our API call
+        const userSelection = document.getElementById("typeOfLiquor").value;
+        fetch (`${cocktailURLByIngredient}${userSelection}`)
+        .then(response => response.json())
+        .then(data => console.log(data));
+        
+
+    // putting the drink objects on the page
+    
+        // the function that will kick off our code
+    // cocktailApp.init = function (){
+
+    // }
+
+    // call the init function
+    // cocktailApp.init();
 
     // -userQuery (for the selected liquor chosen)
 
