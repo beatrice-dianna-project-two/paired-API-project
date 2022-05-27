@@ -327,6 +327,10 @@ ul {
   margin: 0;
 }
 
+.drinkList {
+  list-style-type: none;
+}
+
 footer {
   background: rgb(97, 201, 97);
   margin: 0;
