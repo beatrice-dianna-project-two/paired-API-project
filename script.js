@@ -4,7 +4,10 @@
 
 // our namespacing app
 const cocktailApp = {};
-cocktailApp.drinkListDiv = document.querySelector(".drinkList")
+cocktailApp.drinkListDiv = document.querySelector(".drinkList");
+cocktailApp.selectedLiquor = document.querySelector(".typeOfLiquor");
+// const selectedLiquor = document.querySelector (".submitButton");
+
 
    // -API Url by ingredient
     const cocktailURLByIngredient = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=";
@@ -47,6 +50,20 @@ cocktailApp.drinkListDiv = document.querySelector(".drinkList")
         });
     }
     // Connecting event listener to the button ('submit') on the form element
+    cocktailApp.setupEventListener = function () {
+        cocktailApp.selectedLiquor.addEventListener('submit', function (){
+            console.log("new liquor selected");
+    // running the above code with the either the above variables - did not work.
+
+        });
+    }
+
+    // selectedLiquor.addEventListener('submit', () => {
+    //     console.log("button was submitted")
+
+    // });
+
+
 
 
     // Create function to display the chosen drink's ingredients & recipe 
@@ -60,7 +77,7 @@ cocktailApp.drinkListDiv = document.querySelector(".drinkList")
 
         // the function that will kick off our code
     cocktailApp.init = function (){
-        
+        selectedLiquor.addEventListener();        
         cocktailApp.getDrinks();
         
     }
