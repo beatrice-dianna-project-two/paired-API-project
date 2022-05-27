@@ -41,8 +41,8 @@ cocktailApp.getDrinks = function () {
             console.log(err);
         })
 
-    const clickSelection = document.getElementById("typeOfLiquor").value;
-    fetch(`${cocktailById}${userSelection}`)
+    const clickSelection = document.getElementById("typeOfLiquor");
+    fetch(`${cocktailById}${clickSelection}`)
         .then(results => {
             // apply the .json() method to our results object
             return results.json();
