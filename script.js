@@ -12,19 +12,27 @@ const cocktailApp = {};
     // making our API call
         const userSelection = document.getElementById("typeOfLiquor").value;
         fetch (`${cocktailURLByIngredient}${userSelection}`)
-        .then(response => response.json())
-        .then(data => console.log(data));
+        .then( results => {
+            // apply the .json() method to our results object
+            return results.json();
+        }).then( data => {
+            // print the data to our console
+            console.log(data);
+        }) 
         
 
-    // putting the drink objects on the page
-    
+    // Getting drinks from the API
+    cocktailApp.getDrinks = function(){
+
+
+    }
+
         // the function that will kick off our code
-    // cocktailApp.init = function (){
+    cocktailApp.init = function (){
+        cocktailApp.getDrinks();
+        
 
-    // }
-
-    // call the init function
-    // cocktailApp.init();
+    }
 
     // -userQuery (for the selected liquor chosen)
 
@@ -41,4 +49,4 @@ const cocktailApp = {};
 
 
     // call the init method to start running our app!
-    // cocktailApp.init();
+    cocktailApp.init();
