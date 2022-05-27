@@ -5,11 +5,10 @@
 // our namespacing app
 const cocktailApp = {};
 
-   // -apiUrl (we will create two variables for the url by ingredient & url by ID)
+   // -API Url by ingredient
     const cocktailURLByIngredient = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=";
-    const cocktailURLById = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?iid=552`;
 
-    // making our API call
+    // making our API call while adding the appropriate end value from the user's selection
         const userSelection = document.getElementById("typeOfLiquor").value;
         fetch (`${cocktailURLByIngredient}${userSelection}`)
         .then( results => {
@@ -18,12 +17,16 @@ const cocktailApp = {};
         }).then( data => {
             // print the data to our console
             cocktailApp.displayDrinks(data);
-        }) 
+        })
+        // error handling should there be an issue with the API
+        .catch((err) => {
+            console.log(err);
+        })
         
     // display the drink options on the page
     cocktailApp.displayDrinks = (drinkData) => {
         let drinksArray = drinkData.drinks;
-        // loop through our drink array
+        // loop through the drink array
         drinksArray.forEach( (drinksList) => {
             console.log(drinksList);
             // build out HTML to display drink name (h2) and the drink image
@@ -35,9 +38,8 @@ const cocktailApp = {};
             drinkImage.alt = drinksList.drinkName;
 
             const drinkOptions = document.createElement('div');
-            // drinkOptions.classList.add();
-            drinkOptions.appendChild(drinkName);
-            drinkOptions.appendChild(drinkImage);
+            // drinkOptions.classList.add(); *========>>>>>>> link the class name after when we create styling for the images <<<<<=========
+            drinkOptions.append(drinkName, drinkImage);
 
             // append that HTML to the drinkList (blank ul on html)
             document.querySelector(".drinkList").appendChild(drinkOptions);
