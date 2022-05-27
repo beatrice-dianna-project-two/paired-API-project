@@ -17,14 +17,36 @@ const cocktailApp = {};
             return results.json();
         }).then( data => {
             // print the data to our console
-            console.log(data);
+            cocktailApp.displayDrinks(data);
         }) 
         
+    // display the drink options on the page
+    cocktailApp.displayDrinks = (drinkData) => {
+        let drinksArray = drinkData.drinks;
+        // loop through our drink array
+        drinksArray.forEach( (drinksList) => {
+            console.log(drinksList);
+            // build out HTML to display drink name (h2) and the drink image
+            const drinkName = document.createElement ('h2');
+            drinkName.innerText = drinksList.strDrink;
+
+            const drinkImage = document.createElement('img');
+            drinkImage.src = drinksList.strDrinkThumb;
+            drinkImage.alt = drinksList.drinkName;
+
+            const drinkOptions = document.createElement('div');
+            // drinkOptions.classList.add();
+            drinkOptions.appendChild(drinkName);
+            drinkOptions.appendChild(drinkImage);
+
+            // append that HTML to the drinkList (blank ul on html)
+            document.querySelector(".drinkList").appendChild(drinkOptions);
+
+        });
+    }
 
     // Getting drinks from the API
     cocktailApp.getDrinks = function(){
-
-
     }
 
         // the function that will kick off our code
