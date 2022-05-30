@@ -1,3 +1,20 @@
-@media(max-width:940px) {
-    
+@media(max-width:768px) {
+    .drinkList {
+        li {
+            width: calc((100% / 2) - 20px);
+        }
+    }
+}
+
+@media(max-width:480px) {
+    .drinkList {
+        li {
+            width: calc((100%) - 20px);
+            margin-bottom: 15px;
+        }
+    }
+    .formContainer{
+        width: 80%;
+        margin: auto;
+    }
 }

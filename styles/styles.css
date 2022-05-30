@@ -289,6 +289,8 @@ form select {
   border: none;
   cursor: pointer;
   background-color: white;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 form select:hover,
 form select:focus {
@@ -307,6 +309,8 @@ form button {
   background-color: rgb(97, 201, 97);
   color: rgb(255, 255, 255);
   cursor: pointer;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 
 button:hover,
@@ -329,6 +333,55 @@ ul {
 
 .drinkList {
   list-style-type: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 0;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+.drinkList li {
+  width: calc(33.3333333333% - 25px);
+  margin-bottom: 22px;
+  cursor: pointer;
+  background-color: rgba(222, 255, 216, 0.64);
+  border-radius: 15px;
+  padding: 15px 10px;
+  -webkit-box-shadow: 0px 10px 13px -7px #000000, 7px 6px 10px 2px rgba(194, 252, 183, 0.64);
+          box-shadow: 0px 10px 13px -7px #000000, 7px 6px 10px 2px rgba(194, 252, 183, 0.64);
+}
+.drinkList li h2 {
+  padding-bottom: 1rem;
+  font-size: 1.2rem;
+  color: rgb(194, 76, 76);
+}
+.drinkList li img {
+  max-width: 100%;
+  border-radius: 15px;
+  -webkit-filter: grayscale(0) blur(0);
+  filter: grayscale(0) blur(0);
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+.drinkList li p {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+}
+
+.drinkList li img:hover,
+.drinkList li img:focus {
+  -webkit-filter: grayscale(100%) blur(3px);
+  filter: grayscale(100%) blur(3px);
+}
+
+.hiddenInstructions > div {
+  display: none;
 }
 
 footer {
@@ -346,8 +399,50 @@ footer p {
 footer p a {
   color: white;
   text-decoration: none;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 footer p a:hover,
 footer p a:focus {
   color: rgb(194, 76, 76);
+}
+footer .footNames {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  text-align: center;
+}
+footer i {
+  font-size: 1.4rem;
+  padding: 0.4rem 0.5rem 1rem;
+  color: white;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+footer i:hover,
+footer i:focus {
+  color: rgb(194, 76, 76);
+}
+
+@media (max-width: 768px) {
+  .drinkList li {
+    width: calc(50% - 20px);
+  }
+}
+@media (max-width: 480px) {
+  .drinkList li {
+    width: calc(100% - 20px);
+    margin-bottom: 15px;
+  }
+
+  .formContainer {
+    width: 80%;
+    margin: auto;
+  }
 }

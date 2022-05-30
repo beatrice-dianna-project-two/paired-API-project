@@ -11,10 +11,27 @@ footer {
         a {
             color: white;
             text-decoration: none;
+            transition: 0.2s ease-in-out;
         }
         a:hover,
         a:focus {
             color: rgb(194, 76, 76);
         }
+    }
+    .footNames {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        text-align: center;
+    }
+    i {
+        font-size: 1.4rem;
+        padding: 0.4rem 0.5rem 1rem;
+        color: white;
+        transition: 0.2s ease-in-out;
+    }
+    i:hover,
+    i:focus {
+        color: rgb(194, 76, 76);
     }
 }

@@ -19,6 +19,7 @@ form {
         border: none;
         cursor: pointer;
         background-color: white;
+        transition: 0.2s ease-in-out;
     }
     select:hover,
     select:focus {
@@ -37,6 +38,7 @@ form {
         background-color: rgb(97, 201, 97);
         color: rgb(255, 255, 255);
         cursor: pointer;
+        transition: 0.2s ease-in-out;
     }
 }
 
