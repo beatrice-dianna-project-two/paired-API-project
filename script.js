@@ -4,30 +4,24 @@
 
 // our namespacing app
 const cocktailApp = {};
-cocktailApp.drinkListDiv = document.querySelector(".drinkList");
+cocktailApp.drinkListDiv = document.querySelector('.drinkList');
 cocktailApp.formEl = document.querySelector('form');
 
 cocktailApp.setupEventListeners = () => {
     //add event listener (submit) to our form element
     cocktailApp.formEl.addEventListener('submit', function (event) {
         event.preventDefault();
-        console.log("prevented crisis");
-
         cocktailApp.getDrinks();
     });
-
 }
 
 // Getting drinks from the API
 cocktailApp.getDrinks = function () {
     // -API Url by ingredient
-    const cocktailURLByIngredient = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=";
-
-    // API URL by ID
-    const cocktailById = 'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?iid=';
+    const cocktailURLByIngredient = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=';
 
     // making our API call while adding the appropriate end value from the user's selection
-    const userSelection = document.getElementById("typeOfLiquor").value;
+    const userSelection = document.getElementById('typeOfLiquor').value;
     fetch(`${cocktailURLByIngredient}${userSelection}`)
         .then(results => {
             // apply the .json() method to our results object
@@ -40,23 +34,7 @@ cocktailApp.getDrinks = function () {
         .catch((err) => {
             console.log(err);
         })
-
-    const clickSelection = document.getElementById("typeOfLiquor");
-    fetch(`${cocktailById}${clickSelection}`)
-        .then(results => {
-            // apply the .json() method to our results object
-            return results.json();
-        }).then(data => {
-            // print the data to our console
-            cocktailApp.displayDrinks(data);
-            console.log(clickSelection);
-        })
-        // error handling should there be an issue with the API
-        .catch((err) => {
-            console.log(err);
-        })
 }
-
 
 // display the drink options on the page
 cocktailApp.displayDrinks = (drinkData) => {
@@ -72,20 +50,86 @@ cocktailApp.displayDrinks = (drinkData) => {
 
         const drinkImage = document.createElement('img');
         drinkImage.src = drinksList.strDrinkThumb;
-        drinkImage.alt = drinksList.drinkName;
+        drinkImage.alt = drinksList.strDrink;
 
         const drinkOptions = document.createElement('li');
-        // drinkOptions.classList.add(); //link the class name after when we create styling for the images
+        drinkOptions.id = drinksList.idDrink;
+        // drinkOptions.classList.add('hiddenInstructions');
+
+        cocktailApp.getDrinkDetails(drinksList.idDrink);
+
+
+
         drinkOptions.append(drinkName, drinkImage);
+        drinkOptions.addEventListener('click', function () {
+            // this.classList.toggle('hiddenInstructions');
+            const divs = this.querySelectorAll('div');
+            divs.forEach(function (div) {
+                div.classList.toggle('sr-only');
+            })
+
+        });
 
         // append that HTML to the drinkList (blank ul on html)
         cocktailApp.drinkListDiv.appendChild(drinkOptions);
     });
 }
 
-// Create function to display the chosen drink's ingredients & recipe 
+cocktailById = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=`;
 
-// Include a reset button to start over (*event listener*)
+cocktailApp.getDrinkDetails = (id) => {
+    fetch(`${cocktailById}${id}`)
+        .then((res) => res.json())
+        .then((data) => {
+            cocktailApp.displayIngredients(data.drinks[0])
+        });
+}
+
+cocktailApp.displayIngredients = (data) => {
+    // note in data we need
+    // strIngredient1 through 15, some null
+    // strInstructions
+    // strMeasure1 through 15, some null
+    const ingredient = [];
+
+    // using the i variable to check if property exists
+    for (let i = 1; i < 15; i++) {
+        if (data.hasOwnProperty(`strIngredient${i}`)) {
+            if (data[`strIngredient${i}`] && data[`strMeasure${i}`]) {
+                ingredient.push({
+                    ingredient: data[`strIngredient${i}`],
+                    measure: data[`strMeasure${i}`]
+                })
+            }
+        }
+    }
+
+    const ingredList = document.createElement('div');
+    ingredList.classList.add('sr-only');
+    ingredList.innerHTML = `
+        <h3> Ingredients </h3>
+        `
+
+    ingredient.forEach((item) => {
+        const ingredientListEl = document.createElement('p');
+        ingredientListEl.textContent += `
+            ${item.measure} ${item.ingredient}  
+        `
+        ingredList.append(ingredientListEl);
+    })
+
+    const drinkDetails = document.createElement('div');
+    drinkDetails.classList.add('sr-only');
+    drinkDetails.innerHTML = `
+    <h3>Instructions</h3>
+    <p>${data.strInstructions}</p>
+    `;
+
+
+    // get the list element by id
+    const elList = document.getElementById(`${data.idDrink}`)
+    elList.append(ingredList, drinkDetails)
+}
 
 // the function that will kick off our code
 cocktailApp.init = function () {
